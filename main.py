@@ -10,27 +10,12 @@ intents.message_content = True
 
 client = commands.Bot(intents=intents)
 
+test_server = 919202475276378174
+
 @client.event
 async def on_ready():
     print(f"Logged in as {client.user}")
     print("..................................")
-
-# LOADING COGS
-initial_extensions = []
-
-for filename in os.listdir("./Cogs"):
-    if filename.endswith(".py"):
-        initial_extensions.append(f"Cogs.{filename[:-3]}")
-
-print("Cogs")
-print("..................................")
-print(initial_extensions)
-print("..................................")
-
-if __name__ == "__main__":
-    for extensions in initial_extensions:
-        client.load_extension(extensions)
-# LOADING DONE
 
 # HELP
 @client.slash_command(name = "help", description = "Help for commands")
@@ -55,6 +40,27 @@ async def help(ctx):
         name = "purge",
         value = "Bulk delete messages"
     )
+    help.add_field(
+        name = "Kick",
+        value = "Kick members"
+    )
     await ctx.respond(embed = help)
+
+# LOADING COGS
+initial_extensions = []
+
+for filename in os.listdir("./Cogs"):
+    if filename.endswith(".py"):
+        initial_extensions.append(f"Cogs.{filename[:-3]}")
+
+print("Cogs")
+print("..................................")
+print(initial_extensions)
+print("..................................")
+
+if __name__ == "__main__":
+    for extensions in initial_extensions:
+        client.load_extension(extensions)
+# LOADING DONE
 
 client.run(os.getenv("TOKEN"))

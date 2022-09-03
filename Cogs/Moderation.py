@@ -1,7 +1,6 @@
-from msilib.schema import AdminUISequence
-import string
 import discord
 from discord.ext import commands
+import os
 
 class Moderation(commands.Cog):
 
@@ -29,16 +28,16 @@ class Moderation(commands.Cog):
     # KICK
     @discord.slash_command(name = "kick", description = "Kick someone")
     @commands.has_permissions(administrator = True)
-    async def kick(self, ctx, user: discord.Member, reason: string):
-        await user.kick(reason = reason)
+    async def kick(self, ctx, user: discord.Member, reason):
+        await user.kick()
         kick = discord.Embed(
             title = f"{user} has been kicked from the server",
-            description = f"Reason = {reason}"
+            description = f"Reason : {reason}"
         )
         await ctx.respond(embed = kick)
 
     @kick.error
-    async def clear_error(self, ctx, error):
+    async def clear_error(ctx, error):
         if isinstance(error, commands.MissingPermissions):
             await ctx.respond("You don't have the permission to kick members")
 
