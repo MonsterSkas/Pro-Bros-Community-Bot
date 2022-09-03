@@ -7,7 +7,7 @@ class Basic(commands.Cog):
         self.client = client
 
     # PING
-    @discord.slash_command(name = "ping", description = "A random message for checking the status of the client")
+    @discord.slash_command(name = "ping", description = "Replies with pong!")
     async def ping(self, ctx):
         ping = discord.Embed(
             title = "Pong 🏓",

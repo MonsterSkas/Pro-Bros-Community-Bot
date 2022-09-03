@@ -36,12 +36,12 @@ if __name__ == "__main__":
 @client.slash_command(name = "help", description = "Help for commands")
 async def help(ctx):
     help = discord.Embed(
-        title = "Pro Bros Community client",
-        description = "It is the official client of the **Pro Bros Community** with simple utility features. More features coming soon."
+        title = "Pro Bros Community Bot",
+        description = "It is the official Bot of the **Pro Bros Community** with simple utility features. More features coming soon."
     )
     help.add_field(
         name = "ping",
-        value = "A random command to check the status of the client"
+        value = "A random command for checking the stats=us of the bot"
     )
     help.add_field(
         name = "membercount",
@@ -53,7 +53,7 @@ async def help(ctx):
     )
     help.add_field(
         name = "purge",
-        value = "purges messages"
+        value = "Bulk delete messages"
     )
     await ctx.respond(embed = help)
 
