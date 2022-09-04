@@ -44,6 +44,10 @@ async def help(ctx):
         name = "Kick",
         value = "Kick members"
     )
+    help.add_field(
+        name = "Ban",
+        value = "Ban members"
+    )
     await ctx.respond(embed = help)
 
 # LOADING COGS
