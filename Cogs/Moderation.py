@@ -32,7 +32,7 @@ class Moderation(commands.Cog):
         await user.kick(reason = reason)
         kick = discord.Embed(
             title = f"{user} has been kicked from the server",
-            description = f"Reason : {reason}"
+            description = f"Reason = {reason}"
         )
         await ctx.respond(embed = kick)
 
@@ -48,7 +48,7 @@ class Moderation(commands.Cog):
         await user.ban(delete_message_days = 1, reason = reason)
         ban = discord.Embed(
             title = f"{user} has been banned from the server",
-            description = f"Reason : {reason}"
+            description = f"Reason = {reason}"
         )
         await ctx.respond(embed = ban)
 
