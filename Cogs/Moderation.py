@@ -29,7 +29,7 @@ class Moderation(commands.Cog):
     @discord.slash_command(name = "kick", description = "Kick someone")
     @commands.has_permissions(administrator = True)
     async def kick(self, ctx, user: discord.Member, reason):
-        await user.kick()
+        await user.kick(reason = reason)
         kick = discord.Embed(
             title = f"{user} has been kicked from the server",
             description = f"Reason : {reason}"
@@ -40,6 +40,22 @@ class Moderation(commands.Cog):
     async def clear_error(ctx, error):
         if isinstance(error, commands.MissingPermissions):
             await ctx.respond("You don't have the permission to kick members")
+
+    # BAN
+    @discord.slash_command(name = "ban", description = "Ban someone")
+    @commands.has_permissions(administrator = True)
+    async def ban(self, ctx, user: discord.Member, reason):
+        await user.ban(delete_message_days = 1, reason = reason)
+        ban = discord.Embed(
+            title = f"{user} has been banned from the server",
+            description = f"Reason : {reason}"
+        )
+        await ctx.respond(embed = ban)
+
+    @ban.error
+    async def clear_error(ctx, error):
+        if isinstance(error, commands.MissingPermissions):
+            await ctx.respond("You don't have the permission to ban members")
 
 def setup(client):
     client.add_cog(Moderation(client))
