@@ -10,6 +10,7 @@ class Moderation(commands.Cog):
     @nextcord.slash_command(name = "purge", description = "Purges messages")
     @commands.has_permissions(administrator = True)
     async def purge(self, ctx: nextcord.Interaction, limit: int):
+
         if limit > 999:
             await ctx.response.send_message("You cannot delete more than 999 messages at a time.")
             return
@@ -21,7 +22,7 @@ class Moderation(commands.Cog):
     @purge.error
     async def clear_error(self, ctx: nextcord.Interaction, error):
         if isinstance(error, commands.MissingPermissions):
-            await ctx.response.send_message("You don't have the permission to purge messages.")
+            await ctx.response.send_message("You don't have the permission to purge messages")
         else:
             raise error
 
@@ -29,6 +30,11 @@ class Moderation(commands.Cog):
     @nextcord.slash_command(name = "kick", description = "Kick someone")
     @commands.has_permissions(administrator = True)
     async def kick(self, ctx: nextcord.Interaction, user: nextcord.Member, reason):
+
+        if ctx.user.top_role <= user.top_role:
+            await ctx.response.send_message("The user you're trying to kick probably has a role higher than or equal to yours")
+            return
+
         await user.kick(reason = reason)
         kick = nextcord.Embed(
             title = f"{user} has been kicked from the server",
@@ -45,7 +51,12 @@ class Moderation(commands.Cog):
     @nextcord.slash_command(name = "ban", description = "Ban someone")
     @commands.has_permissions(administrator = True)
     async def ban(self, ctx: nextcord.Interaction, user: nextcord.Member, reason):
-        await user.ban(delete_message_days = 1, reason = reason)
+
+        if ctx.user.top_role <= user.top_role:
+            await ctx.response.send_message("The user you're trying to ban probably has a role higher than or equal to yours")
+            return
+
+        await user.ban(reason = reason)
         ban = nextcord.Embed(
             title = f"{user} has been banned from the server",
             description = f"Reason = {reason}"
