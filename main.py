@@ -73,4 +73,9 @@ keep_alive()
 
 #client.run(os.getenv("TOKEN"))
 
-client.run(os.environ["TOKEN"])
+try:
+    client.run(os.environ["TOKEN"])
+except nextcord.errors.HTTPException:
+    print("\n\nBLOCKED BY RATE LIMITS\nRESTARTING NOW\n\n\n")
+    os.system("python restarter.py")
+    os.system("kill 1")
