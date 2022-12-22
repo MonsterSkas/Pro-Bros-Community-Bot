@@ -1,11 +1,11 @@
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
-intents = discord.Intents.default()
+intents = nextcord.Intents.default()
 intents.message_content = True
 
 client = commands.Bot(intents=intents)
@@ -19,8 +19,8 @@ async def on_ready():
 
 # HELP
 @client.slash_command(name = "help", description = "Help for commands")
-async def help(ctx):
-    help = discord.Embed(
+async def help(ctx: nextcord.Interaction):
+    help = nextcord.Embed(
         title = "Pro Bros Community Bot",
         description = "It is the official Bot of the **Pro Bros Community** with simple utility features. More features coming soon."
     )
@@ -48,7 +48,7 @@ async def help(ctx):
         name = "Ban",
         value = "Ban members"
     )
-    await ctx.respond(embed = help)
+    await ctx.response.send_message(embed = help)
 
 # LOADING COGS
 initial_extensions = []
