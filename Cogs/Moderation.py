@@ -18,7 +18,6 @@ class Moderation(commands.Cog):
             await ctx.response.send_message(f"Deleting {limit} message(s)")
             await ctx.delete_original_message()
             await ctx.channel.purge(limit=limit)
-            await ctx.channel.send(f"Deleted {limit} message(s)")
 
     @purge.error
     async def clear_error(self, ctx: nextcord.Interaction, error):
