@@ -1,9 +1,11 @@
 import nextcord
 from nextcord.ext import commands
 import os
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 
-load_dotenv()
+#load_dotenv()
+
+from keep_alive import keep_alive
 
 intents = nextcord.Intents.default()
 intents.message_content = True
@@ -67,4 +69,8 @@ if __name__ == "__main__":
         client.load_extension(extensions)
 # LOADING DONE
 
-client.run(os.getenv("TOKEN"))
+keep_alive()
+
+#client.run(os.getenv("TOKEN"))
+
+client.run(os.environ["TOKEN"])
