@@ -15,6 +15,8 @@ class Moderation(commands.Cog):
             await ctx.response.send_message("You cannot delete more than 999 messages at a time.")
             return
         else:
+            await ctx.response.send_message(f"Deleting {limit} message(s)")
+            await ctx.delete_original_message()
             await ctx.channel.purge(limit=limit)
             await ctx.response.send_message(f"Deleted {limit} message(s)")
             await ctx.delete_original_message(delay=2.0)
