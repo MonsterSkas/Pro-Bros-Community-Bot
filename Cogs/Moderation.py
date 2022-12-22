@@ -18,7 +18,7 @@ class Moderation(commands.Cog):
             await ctx.response.send_message(f"Deleting {limit} message(s)")
             await ctx.delete_original_message()
             await ctx.channel.purge(limit=limit)
-            await ctx.response.send_message(f"Deleted {limit} message(s)")
+            await ctx.channel.send(f"Deleted {limit} message(s)")
             await ctx.delete_original_message(delay=2.0)
 
     @purge.error
