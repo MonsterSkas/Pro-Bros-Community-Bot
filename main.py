@@ -1,6 +1,7 @@
 import nextcord
 from nextcord.ext import commands
 import os
+import requests
 #from dotenv import load_dotenv
 
 #load_dotenv()
@@ -75,7 +76,10 @@ keep_alive()
 
 try:
     client.run(os.environ["TOKEN"])
-except nextcord.errors.HTTPException:
-    print("\n\nBLOCKED BY RATE LIMITS\nRESTARTING NOW\n\n\n")
-    os.system("python restarter.py")
-    os.system("kill 1")
+except nextcord.errors.HTTPException as err:
+    status = err.status
+    print(status)
+    if status == 429:
+        print("\n\nBLOCKED BY RATE LIMITS\nRESTARTING NOW\n\n\n")
+        os.system("kill 1")
+        os.system("python restarter.py")
