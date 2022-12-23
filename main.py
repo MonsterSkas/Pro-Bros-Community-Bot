@@ -78,7 +78,6 @@ while True:
     try:
         client.run(os.environ["TOKEN"])
     except nextcord.errors.HTTPException as err:
-        status = err.status_code
-        if status == 429:
+        if err.status == 429:
             print("\n\nBLOCKED BY RATE LIMITS\nRESTARTING NOW\n\n\n")
             os.system("kill 1")
