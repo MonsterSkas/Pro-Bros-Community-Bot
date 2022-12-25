@@ -46,5 +46,16 @@ class Basic(commands.Cog):
         else:
             await ctx.response.send_message("Can't give you that role")
 
+    # REMOVEROLE
+    @nextcord.slash_command(name = "removerole", description = "Removes a role from you")
+    async def removerole(self, ctx: nextcord.Interaction, role: nextcord.Role):
+        user = ctx.user
+
+        if(user.get_role(role_id=role.id) == False):
+            await ctx.response.send_message("You don't have that role")
+        else:
+            await user.remove_roles(role)
+            await ctx.response.send_message(f"Removed {role} role")
+
 def setup(client):
     client.add_cog(Basic(client))
