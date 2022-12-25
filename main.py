@@ -1,9 +1,9 @@
 import nextcord
 from nextcord.ext import commands
 import os
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 
-load_dotenv()
+#load_dotenv()
 
 from keep_alive import keep_alive
 
