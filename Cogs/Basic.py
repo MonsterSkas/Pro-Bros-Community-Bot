@@ -44,7 +44,7 @@ class Basic(commands.Cog):
             role.name == "giveaways" or
             role.name == "mafia-players" or
             role.name == "dank-players" or
-            role.name == "poktwo-players" or
+            role.name == "poketwo-players" or
             role.name == "pokeone-players"
         ):
             await user.add_roles(role)
@@ -64,7 +64,7 @@ class Basic(commands.Cog):
                 role.name == "giveaways" or
                 role.name == "mafia-players" or
                 role.name == "dank-players" or
-                role.name == "poktwo-players" or
+                role.name == "poketwo-players" or
                 role.name == "pokeone-players"
             ):
                 await user.remove_roles(role)
