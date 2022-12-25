@@ -39,7 +39,7 @@ class Basic(commands.Cog):
     @nextcord.slash_command(name = "addrole", description = "Assigns a role to you")
     async def addrole(self, ctx: nextcord.Interaction, role: nextcord.Role):
         user = ctx.user
-        await user.add_roles(roles=role)
+        await user.add_roles(role)
         await ctx.response.send_message(f"Gave you {role} role")
 
 def setup(client):
