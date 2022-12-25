@@ -39,8 +39,12 @@ class Basic(commands.Cog):
     @nextcord.slash_command(name = "addrole", description = "Assigns a role to you")
     async def addrole(self, ctx: nextcord.Interaction, role: nextcord.Role):
         user = ctx.user
-        await user.add_roles(role)
-        await ctx.response.send_message(f"Gave you {role} role")
+
+        if role.name == "new role":
+            await user.add_roles(role)
+            await ctx.response.send_message(f"Gave you {role} role")
+        else:
+            await ctx.response.send_message("Can't give you that role")
 
 def setup(client):
     client.add_cog(Basic(client))
