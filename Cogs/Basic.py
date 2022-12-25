@@ -40,12 +40,12 @@ class Basic(commands.Cog):
     async def addrole(self, ctx: nextcord.Interaction, role: nextcord.Role):
         user = ctx.user
 
-        if role.name == (
-            "giveaways" or
-            "mafia-players" or
-            "dank-players" or
-            "poketwo-players" or
-            "pokeone-players"
+        if (
+            role.name == "giveaways" or
+            role.name == "mafia-players" or
+            role.name == "dank-players" or
+            role.name == "poktwo-players" or
+            role.name == "pokeone-players"
         ):
             await user.add_roles(role)
             await ctx.response.send_message(f"Gave you {role} role")
@@ -60,12 +60,12 @@ class Basic(commands.Cog):
         if not user.get_role(role.id):
             await ctx.response.send_message("You don't have that role")
         else:
-            if role.name == (
-                "giveaways" or
-                "mafia-players" or
-                "dank-players" or
-                "poketwo-players" or
-                "pokeone-players"
+            if (
+                role.name == "giveaways" or
+                role.name == "mafia-players" or
+                role.name == "dank-players" or
+                role.name == "poktwo-players" or
+                role.name == "pokeone-players"
             ):
                 await user.remove_roles(role)
                 await ctx.response.send_message(f"Removed {role} role")
