@@ -7,7 +7,7 @@ class Basic(commands.Cog):
         self.client = client
 
     # PING
-    @nextcord.slash_command(name = "ping", description = "Replies with pong!")
+    @nextcord.slash_command(name = "ping", description = "Replies with pong")
     async def ping(self, ctx: nextcord.Interaction):
         ping = nextcord.Embed(
             title = "Pong 🏓",
@@ -54,8 +54,11 @@ class Basic(commands.Cog):
         if(not user.get_role(role.id)):
             await ctx.response.send_message("You don't have that role")
         else:
-            await user.remove_roles(role)
-            await ctx.response.send_message(f"Removed {role} role")
+            if role.name == "new role":
+                await user.remove_roles(role)
+                await ctx.response.send_message(f"Removed {role} role")
+            else:
+                await ctx.response.send_message("Can't remove tha role")
 
 def setup(client):
     client.add_cog(Basic(client))

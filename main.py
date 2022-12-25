@@ -38,11 +38,19 @@ async def help(ctx: nextcord.Interaction):
         name = "avatar",
         value = "Gives the avatar of an user"
     )
+    help.add_field(
+        name = "addrole",
+        value = "Assigns a role"
+    )
+    help.add_field(
+        name = "removerole",
+        value = "Removes a role"
+    )
 
     help.set_author(name="Rayquaza")
     help.author.icon_url = "https://cdn.discordapp.com/avatars/1011260492486033419/e2c5accbcf86f0681ec45bd759c5e40a.png?size=1024"
     help.set_thumbnail(url="https://cdn.discordapp.com/avatars/1011260492486033419/e2c5accbcf86f0681ec45bd759c5e40a.png?size=1024")
-    help.set_footer(text="Total commands: 3")
+    help.set_footer(text="Total commands: 5")
     await ctx.response.send_message(embed = help)
 
 # LOADING COGS
