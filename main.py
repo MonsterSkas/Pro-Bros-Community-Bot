@@ -28,7 +28,7 @@ async def help(ctx: nextcord.Interaction):
     )
     help.add_field(
         name = "ping",
-        value = "A random command for checking the stats=us of the bot"
+        value = "A random command for checking the status of the bot"
     )
     help.add_field(
         name = "membercount",

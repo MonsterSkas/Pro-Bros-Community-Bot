@@ -35,5 +35,12 @@ class Basic(commands.Cog):
         except:
             await ctx.response.send_message("User has no avatar.")
 
+    # ADDROLE
+    @nextcord.slash_command(name = "addrole", description = "Assigns a role to you")
+    async def addrole(self, ctx: nextcord.Interaction, role: nextcord.Role):
+        user = ctx.user
+        user.add_roles(roles=role)
+        ctx.response.send_message(f"Gave you {role} role")
+
 def setup(client):
     client.add_cog(Basic(client))
