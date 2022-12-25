@@ -23,8 +23,8 @@ async def on_ready():
 @client.slash_command(name = "help", description = "Help for commands")
 async def help(ctx: nextcord.Interaction):
     help = nextcord.Embed(
-        title = "Pro Bros Community Bot",
-        description = "It is the official Bot of the **Pro Bros Community** with simple utility features. More features coming soon."
+        title = "Help",
+        description = "Hi, I'm the official bot of **SXI Masters** with simple features"
     )
     help.add_field(
         name = "ping",
@@ -37,18 +37,6 @@ async def help(ctx: nextcord.Interaction):
     help.add_field(
         name = "avatar",
         value = "Gives the avatar of an user"
-    )
-    help.add_field(
-        name = "purge",
-        value = "Bulk delete messages"
-    )
-    help.add_field(
-        name = "Kick",
-        value = "Kick members"
-    )
-    help.add_field(
-        name = "Ban",
-        value = "Ban members"
     )
     await ctx.response.send_message(embed = help)
 

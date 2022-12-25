@@ -1,2 +1,2 @@
-# Pro-Bros-Community-Bot
+# Rayquaza
 A Discord bot
