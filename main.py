@@ -1,9 +1,9 @@
 import nextcord
 from nextcord.ext import commands
 import os
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 
-#load_dotenv()
+load_dotenv()
 
 from keep_alive import keep_alive
 
@@ -39,10 +39,10 @@ async def help(ctx: nextcord.Interaction):
         value = "Gives the avatar of an user"
     )
 
-    help.set_author("Rayquaza")
-    help.author.icon_url("https://cdn.discordapp.com/avatars/1011260492486033419/e2c5accbcf86f0681ec45bd759c5e40a.png?size=1024")
-    help.set_thumbnail("https://cdn.discordapp.com/avatars/1011260492486033419/e2c5accbcf86f0681ec45bd759c5e40a.png?size=1024")
-    help.set_footer("Total commands: 3")
+    help.set_author(name="Rayquaza")
+    help.author.icon_url = "https://cdn.discordapp.com/avatars/1011260492486033419/e2c5accbcf86f0681ec45bd759c5e40a.png?size=1024"
+    help.set_thumbnail(url="https://cdn.discordapp.com/avatars/1011260492486033419/e2c5accbcf86f0681ec45bd759c5e40a.png?size=1024")
+    help.set_footer(text="Total commands: 3")
     await ctx.response.send_message(embed = help)
 
 # LOADING COGS
