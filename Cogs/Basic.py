@@ -51,7 +51,7 @@ class Basic(commands.Cog):
     async def removerole(self, ctx: nextcord.Interaction, role: nextcord.Role):
         user = ctx.user
 
-        if(user.get_role(role_id=role.id) == False):
+        if(user.get_role(role.id) == False):
             await ctx.response.send_message("You don't have that role")
         else:
             await user.remove_roles(role)
