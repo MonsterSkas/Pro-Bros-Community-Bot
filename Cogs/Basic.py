@@ -70,7 +70,7 @@ class Basic(commands.Cog):
                 await user.remove_roles(role)
                 await ctx.response.send_message(f"Removed {role} role")
             else:
-                await ctx.response.send_message("Can't remove tha role")
+                await ctx.response.send_message("Can't remove that role")
 
 def setup(client):
     client.add_cog(Basic(client))
